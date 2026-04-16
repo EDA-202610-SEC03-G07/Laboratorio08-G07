@@ -1,7 +1,7 @@
 import rbt_node as rbt
-
-
-
+from DataStructures.Tree import rbt_node as rb
+from DataStructures.List import single_linked_list as sl
+import datetime
 
 def new_rbt():
     return {
@@ -9,25 +9,25 @@ def new_rbt():
         "type": "RBT",
     }
     
+def put(my_rbt, key, value):
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    if my_rbt is None:
+        my_rbt = new_rbt()
+    my_rbt["root"] = insert_node(my_rbt["root"], key, value)
+    return my_rbt
+
+def insert_node(root, key, value):
+    if root is None:
+        root= rb.new_node(key, value)
+    else:
+        if key < rb.get_key(root): #caso 1 - el key es menor que la llave del root , por lo tanto para la izquierda
+            root["left"] = insert_node(root["left"], key, value)
+        elif key > rb.get_key(root): #caso 2 - el key es mayor que la llave del root, por lo tanto para la derecha
+            root["right"] = insert_node(root["right"], key, value)
+        else:
+            root["value"] = value
+        root["size"] = 1 + size_tree(root["left"]) + size_tree(root["right"])
+    return root
 def size(my_tree):
     if my_tree is None:
         return 0
