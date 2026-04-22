@@ -3,7 +3,6 @@ from DataStructures.List import single_linked_list as sl
 import datetime
 
 
-
 def normalize_to_date(key):
     """
     Normaliza 'key' a datetime.date:
