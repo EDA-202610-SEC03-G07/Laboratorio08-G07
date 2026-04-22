@@ -84,6 +84,7 @@ def add_crime(analyzer, crime):
     """
     al.add_last(analyzer['crimes'], crime)
     update_date_index(analyzer['dateIndex'], crime)
+    update_area_index(analyzer['areaIndex'], crime)  
     # TODO Actualizar el indice por areas reportadas
 
     return analyzer
@@ -96,6 +97,19 @@ def update_area_index(map, crime):
     y si el area son ["", " ", None] se utiliza el valor por defecto 9999
     """
     # TODO Implementar actualizacion del indice por areas reportadas
+    area = crime.get("area", None)  # ajusta el nombre del campo según tu CSV
+    
+    
+    if area is None or area is "" or area is " ":
+        area = 9999
+
+    entry = rbt.get(map, area)
+    if entry is None:
+        entry = al.new_list()
+        al.add_last(entry, crime)
+        rbt.put(map, area, entry)
+    else:
+        al.add_last(entry, crime)
     return map
 
 
