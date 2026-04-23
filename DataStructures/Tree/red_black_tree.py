@@ -196,7 +196,7 @@ def height_tree(root):
 def height(my_rbt):
     if my_rbt is None:
         return 0
-    return height_tree(my_rbt["root"]) + 1
+    return height_tree(my_rbt["root"]) 
 
 def keys_range(root, key_initial, key_final, key_list):
     if root is not None:
