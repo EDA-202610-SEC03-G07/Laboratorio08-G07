@@ -97,10 +97,10 @@ def update_area_index(map, crime):
     y si el area son ["", " ", None] se utiliza el valor por defecto 9999
     """
     # TODO Implementar actualizacion del indice por areas reportadas
-    area = crime.get("area", None)  # ajusta el nombre del campo según tu CSV
+    area = crime.get("REPORTING_AREA", None)  # ajusta el nombre del campo según tu CSV
     
     
-    if area is None or area is "" or area is " ":
+    if area is None or area == "" or area == " ":
         area = 9999
 
     entry = rbt.get(map, area)
@@ -259,7 +259,7 @@ def get_crimes_by_range_area(analyzer, initialArea, finalArea):
     act = lst["first"]
     while act is not None:
         lstarea = act["info"]
-        totalcrimes += al.size(lstarea["lstcrimes"])
+        totalcrimes += al.size(lstarea)
         act = act["next"] 
     return totalcrimes
 
