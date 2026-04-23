@@ -208,14 +208,14 @@ def min_key(analyzer):
     """
     Llave mas pequena
     """
-    return rbt.left_key_tree(analyzer["dateIndex"])
+    return rbt.left_key_tree(analyzer["dateIndex"]["root"])
 
 
 def max_key(analyzer):
     """
     Llave mas grande
     """
-    return rbt.right_key_tree(analyzer["dateIndex"])
+    return rbt.right_key_tree(analyzer["dateIndex"],["root"])
 
 
 def index_height_areas(analyzer):
