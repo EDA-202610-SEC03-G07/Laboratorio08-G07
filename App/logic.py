@@ -254,7 +254,7 @@ def get_crimes_by_range_area(analyzer, initialArea, finalArea):
     Retorna el numero de crimenes en un rango de areas
     """
     # TODO Completar la consulta de crimenes por rango de areas
-    lst = rbt.values(analyzer["areaIndex"], initialArea, finalArea) 
+    lst = rbt.values(analyzer["areaIndex"],int(initialArea), int(finalArea)) 
     totalcrimes = 0
     act = lst["first"]
     while act is not None:
