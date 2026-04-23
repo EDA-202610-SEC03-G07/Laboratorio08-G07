@@ -102,6 +102,8 @@ def update_area_index(map, crime):
     
     if area is None or area == "" or area == " ":
         area = 9999
+    else: 
+        area = int(area)
 
     entry = rbt.get(map, area)
     if entry is None:
