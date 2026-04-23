@@ -273,8 +273,11 @@ def get_crimes_by_range(analyzer, initialDate, finalDate):
     finalDate = datetime.datetime.strptime(finalDate, '%Y-%m-%d')
     lst = rbt.values(analyzer["dateIndex"], initialDate.date(), finalDate.date())
     totalcrimes = 0
-    for lstdate in lst["elements"]:
+    act = lst["first"]
+    while act is not None:
+        lstdate = act["info"]
         totalcrimes += al.size(lstdate["lstcrimes"])
+        act = act["next"]
     return totalcrimes
 
 
